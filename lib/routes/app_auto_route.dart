@@ -5,10 +5,30 @@ import 'package:flutter_my_event/routes/app_auto_route.gr.dart';
 class AppAutoRoute extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(page: HomeSetupRoute.page, path: RoutePath.home, initial: true),
+    AutoRoute(
+      page: RootSetupRoute.page,
+      path: RoutePath.root,
+      initial: true,
+      children: [
+        AutoRoute(
+          page: HomeSetupRoute.page,
+          path: RoutePath.home,
+          initial: true,
+        ),
+        AutoRoute(page: SavedSetupRoute.page, path: RoutePath.saved),
+        AutoRoute(page: DealsSetupRoute.page, path: RoutePath.deals),
+        AutoRoute(page: ProfileSetupRoute.page, path: RoutePath.profile),
+        AutoRoute(page: EventSetupRoute.page, path: RoutePath.event),
+      ],
+    ),
   ];
 }
 
 class RoutePath {
-  static const String home = '/';
+  static const String root = '/';
+  static const String home = 'home';
+  static const String deals = 'deals';
+  static const String profile = 'profile';
+  static const String event = 'event';
+  static const String saved = 'saved';
 }

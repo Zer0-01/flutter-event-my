@@ -42,7 +42,10 @@ class App extends StatelessWidget {
   ThemeData _buildLightTheme() => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    colorScheme: ColorScheme.light(primary: Color(0xff079669)),
+    colorScheme: ColorScheme.light(
+      primary: Color(0xff079669),
+      secondary: Color(0xffd8f8e9),
+    ),
   );
 
   MultiBlocProvider _buildMultiBlocProvider(ThemeData light, ThemeData dark) {

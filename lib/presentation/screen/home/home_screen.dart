@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_my_event/presentation/screen/home/widgets/event_type_section_widget.dart';
+import 'package:flutter_my_event/presentation/screen/home/widgets/vendor_type_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,7 +18,12 @@ class HomeScreen extends StatelessWidget {
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
-          SliverToBoxAdapter(child: EventTypeSectionWidget()),
+          SliverToBoxAdapter(
+            child: Column(
+              spacing: 8,
+              children: [EventTypeSectionWidget(), VendorTypeWidget()],
+            ),
+          ),
         ],
       ),
     );

@@ -1,0 +1,58 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_my_event/routes/app_auto_route.dart';
+
+/// Main application widget. This widget is the root of your application.
+///
+/// It is configured to provide a [ThemeData] based on the current
+/// [AdaptiveThemeMode] and to provide a [MaterialApp] with the
+/// [AdaptiveThemeMode] as the initial theme mode.
+///
+
+class App extends StatelessWidget {
+  final String language;
+  final AdaptiveThemeMode initialTheme;
+  final _appRouter = AppAutoRoute();
+
+  App({super.key, required this.language, required this.initialTheme});
+
+  @override
+  Widget build(BuildContext context) {
+    return buildHomeApp();
+  }
+
+  AdaptiveTheme buildHomeApp() {
+    return AdaptiveTheme(
+      light: _buildLightTheme(),
+      dark: _buildDarkTheme(),
+      debugShowFloatingThemeButton: false,
+      initial: initialTheme,
+      builder: (light, dark) => _buildMultiBlocProvider(light, dark),
+    );
+  }
+
+  ThemeData _buildDarkTheme() => ThemeData(
+    useMaterial3: false,
+    brightness: Brightness.dark,
+    primarySwatch: Colors.blueGrey,
+  );
+
+  ThemeData _buildLightTheme() => ThemeData(
+    useMaterial3: false,
+    brightness: Brightness.light,
+    colorSchemeSeed: Colors.blueGrey,
+  );
+
+  MultiBlocProvider _buildMultiBlocProvider(ThemeData light, ThemeData dark) {
+    return MultiBlocProvider(
+      providers: [],
+      child: MaterialApp.router(
+        routerConfig: _appRouter.config(),
+        theme: light,
+        darkTheme: dark,
+        debugShowCheckedModeBanner: false,
+      ),
+    );
+  }
+}

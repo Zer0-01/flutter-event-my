@@ -1,6 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_my_event/presentation/common_blocs/language_bloc/language_bloc.dart';
 import 'package:flutter_my_event/routes/app_auto_route.dart';
 
 /// Main application widget. This widget is the root of your application.
@@ -26,7 +27,7 @@ class App extends StatelessWidget {
     return AdaptiveTheme(
       light: _buildLightTheme(),
       dark: _buildDarkTheme(),
-      debugShowFloatingThemeButton: false,
+      debugShowFloatingThemeButton: true,
       initial: initialTheme,
       builder: (light, dark) => _buildMultiBlocProvider(light, dark),
     );
@@ -46,7 +47,7 @@ class App extends StatelessWidget {
 
   MultiBlocProvider _buildMultiBlocProvider(ThemeData light, ThemeData dark) {
     return MultiBlocProvider(
-      providers: [],
+      providers: [BlocProvider(create: (context) => LanguageBloc())],
       child: MaterialApp.router(
         routerConfig: _appRouter.config(),
         theme: light,

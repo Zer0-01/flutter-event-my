@@ -21,15 +21,17 @@ class RootScreen extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
-                color: Theme.of(context).colorScheme.secondary,
+                color: Theme.of(context).colorScheme.outline,
                 width: 1,
               ),
             ),
           ),
           child: BottomNavigationBar(
+            showUnselectedLabels: true,
+            type: BottomNavigationBarType.fixed,
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
-            unselectedItemColor: Theme.of(context).colorScheme.secondary,
+            unselectedItemColor: Theme.of(context).colorScheme.outline,
             selectedItemColor: Theme.of(context).colorScheme.primary,
             items: const [
               BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),

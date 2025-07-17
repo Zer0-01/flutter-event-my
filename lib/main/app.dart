@@ -45,6 +45,7 @@ class App extends StatelessWidget {
     colorScheme: ColorScheme.light(
       primary: Color(0xff079669),
       secondary: Color(0xffd8f8e9),
+      outline: Colors.grey.shade300,
     ),
   );
 

@@ -12,10 +12,15 @@ class RootScreen extends StatelessWidget {
       routes: const [
         HomeSetupRoute(),
         EventSetupRoute(),
-        DealsSetupRoute(),
         SavedSetupRoute(),
         ProfileSetupRoute(),
       ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        shape: CircleBorder(),
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBuilder: (_, tabsRouter) {
         return Container(
           decoration: BoxDecoration(
@@ -30,7 +35,11 @@ class RootScreen extends StatelessWidget {
             showUnselectedLabels: true,
             type: BottomNavigationBarType.fixed,
             currentIndex: tabsRouter.activeIndex,
-            onTap: tabsRouter.setActiveIndex,
+            onTap: (index) {
+              // Skip the dummy middle index
+              if (index == 2) return;
+              tabsRouter.setActiveIndex(index > 2 ? index - 1 : index);
+            },
             unselectedItemColor: Theme.of(context).colorScheme.outline,
             selectedItemColor: Theme.of(context).colorScheme.primary,
             items: const [
@@ -39,10 +48,9 @@ class RootScreen extends StatelessWidget {
                 label: 'My Events',
                 icon: Icon(Icons.event),
               ),
-              BottomNavigationBarItem(
-                label: 'Deals',
-                icon: Icon(Icons.discount),
-              ),
+
+              BottomNavigationBarItem(label: '', icon: SizedBox.shrink()),
+
               BottomNavigationBarItem(
                 label: 'Saved',
                 icon: Icon(CupertinoIcons.heart_fill),

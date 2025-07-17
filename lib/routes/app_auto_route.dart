@@ -4,6 +4,8 @@ import 'package:flutter_my_event/routes/app_auto_route.gr.dart';
 @AutoRouterConfig()
 class AppAutoRoute extends RootStackRouter {
   @override
+  RouteType get defaultRouteType => RouteType.cupertino();
+  @override
   List<AutoRoute> get routes => [
     AutoRoute(
       page: RootSetupRoute.page,
@@ -21,6 +23,7 @@ class AppAutoRoute extends RootStackRouter {
         AutoRoute(page: EventSetupRoute.page, path: RoutePath.event),
       ],
     ),
+    AutoRoute(page: EventBasicSetupRoute.page, path: RoutePath.eventBasic),
   ];
 }
 
@@ -31,4 +34,5 @@ class RoutePath {
   static const String profile = 'profile';
   static const String event = 'event';
   static const String saved = 'saved';
+  static const String eventBasic = '/eventBasic';
 }

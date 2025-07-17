@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_my_event/routes/app_auto_route.dart';
 import 'package:flutter_my_event/routes/app_auto_route.gr.dart';
+import 'package:flutter_my_event/routes/app_router.dart';
 
 class RootScreen extends StatelessWidget {
   const RootScreen({super.key});
@@ -16,7 +18,9 @@ class RootScreen extends StatelessWidget {
         ProfileSetupRoute(),
       ],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          AppRouter().push(context, RoutePath.eventBasic);
+        },
         shape: CircleBorder(),
         child: Icon(Icons.add),
       ),

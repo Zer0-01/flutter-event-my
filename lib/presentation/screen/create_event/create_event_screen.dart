@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_my_event/routes/app_router.dart';
 
-class EventBasicScreen extends StatelessWidget {
-  const EventBasicScreen({super.key});
+class CreateEventScreen extends StatelessWidget {
+  const CreateEventScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

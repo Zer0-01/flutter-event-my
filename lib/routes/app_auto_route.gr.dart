@@ -10,12 +10,12 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter_my_event/presentation/screen/deals/deals_setup_screen.dart'
+import 'package:flutter_my_event/presentation/screen/create_event/create_event_setup_screen.dart'
     as _i1;
+import 'package:flutter_my_event/presentation/screen/deals/deals_setup_screen.dart'
+    as _i2;
 import 'package:flutter_my_event/presentation/screen/event/event_setup_screen.dart'
     as _i3;
-import 'package:flutter_my_event/presentation/screen/event_basic/event_basic_setup_screen.dart'
-    as _i2;
 import 'package:flutter_my_event/presentation/screen/home/home_setup_screen.dart'
     as _i4;
 import 'package:flutter_my_event/presentation/screen/profile/profile_setup_screen.dart'
@@ -26,7 +26,23 @@ import 'package:flutter_my_event/presentation/screen/saved/saved_setup_screen.da
     as _i7;
 
 /// generated route for
-/// [_i1.DealsSetupScreen]
+/// [_i1.CreateEventSetupScreen]
+class CreateEventSetupRoute extends _i8.PageRouteInfo<void> {
+  const CreateEventSetupRoute({List<_i8.PageRouteInfo>? children})
+    : super(CreateEventSetupRoute.name, initialChildren: children);
+
+  static const String name = 'CreateEventSetupRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.CreateEventSetupScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [_i2.DealsSetupScreen]
 class DealsSetupRoute extends _i8.PageRouteInfo<void> {
   const DealsSetupRoute({List<_i8.PageRouteInfo>? children})
     : super(DealsSetupRoute.name, initialChildren: children);
@@ -36,23 +52,7 @@ class DealsSetupRoute extends _i8.PageRouteInfo<void> {
   static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i1.DealsSetupScreen();
-    },
-  );
-}
-
-/// generated route for
-/// [_i2.EventBasicSetupScreen]
-class EventBasicSetupRoute extends _i8.PageRouteInfo<void> {
-  const EventBasicSetupRoute({List<_i8.PageRouteInfo>? children})
-    : super(EventBasicSetupRoute.name, initialChildren: children);
-
-  static const String name = 'EventBasicSetupRoute';
-
-  static _i8.PageInfo page = _i8.PageInfo(
-    name,
-    builder: (data) {
-      return const _i2.EventBasicSetupScreen();
+      return const _i2.DealsSetupScreen();
     },
   );
 }

@@ -19,7 +19,7 @@ class RootScreen extends StatelessWidget {
       ],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          AppRouter().push(context, RoutePath.eventBasic);
+          AppRouter().push(context, RoutePath.createEvent);
         },
         shape: CircleBorder(),
         child: Icon(Icons.add),

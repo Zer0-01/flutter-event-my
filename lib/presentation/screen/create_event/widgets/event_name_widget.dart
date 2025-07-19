@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_my_event/presentation/common_widgets/app_text_form_field_widget.dart';
 
 class EventNameWidget extends StatelessWidget {
   final TextEditingController eventNameController;
@@ -13,28 +14,7 @@ class EventNameWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Event Name"),
-          TextFormField(
-            controller: eventNameController,
-            decoration: InputDecoration(
-              isCollapsed: true,
-              contentPadding: EdgeInsets.all(4),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.outline,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.error,
-                ),
-              ),
-            ),
-          ),
+          AppTextFormFieldWidget(controller: eventNameController),
         ],
       ),
     );

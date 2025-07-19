@@ -42,7 +42,7 @@ class RootScreen extends StatelessWidget {
             onTap: (index) {
               // Skip the dummy middle index
               if (index == 2) return;
-              tabsRouter.setActiveIndex(index > 2 ? index - 1 : index);
+              tabsRouter.setActiveIndex(index);
             },
             unselectedItemColor: Theme.of(context).colorScheme.outline,
             selectedItemColor: Theme.of(context).colorScheme.primary,

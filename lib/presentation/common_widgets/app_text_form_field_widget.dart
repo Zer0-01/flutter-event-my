@@ -24,17 +24,20 @@ class AppTextFormFieldWidget extends StatelessWidget {
         isCollapsed: true,
         suffixIcon: suffixIcon,
         suffixIconConstraints: BoxConstraints(),
-        contentPadding: EdgeInsets.all(4),
+        contentPadding: EdgeInsets.all(8),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
+          borderRadius: BorderRadius.circular(8),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.onSurface,
           ),
+          borderRadius: BorderRadius.circular(8),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
     );

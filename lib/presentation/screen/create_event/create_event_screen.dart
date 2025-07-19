@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/widgets/event_date_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/widgets/event_headline_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/widgets/event_name_widget.dart';
+import 'package:flutter_my_event/presentation/screen/create_event/widgets/event_summary_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/widgets/event_time_widget.dart';
 import 'package:flutter_my_event/routes/app_router.dart';
 
@@ -77,6 +78,16 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                   eventTimeController: _startTimeController,
                   durationController: _durationController,
                 ),
+                if (_eventNameController.text.isNotEmpty &&
+                    _eventDateController.text.isNotEmpty &&
+                    _startTimeController.text.isNotEmpty &&
+                    _durationController.text.isNotEmpty)
+                  EventSummaryWidget(
+                    eventName: _eventNameController.text,
+                    eventDate: _eventDateController.text,
+                    eventTime: _startTimeController.text,
+                    eventDuration: _durationController.text,
+                  ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: SizedBox(

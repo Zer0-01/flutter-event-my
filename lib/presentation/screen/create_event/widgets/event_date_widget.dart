@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_my_event/presentation/common_widgets/app_text_form_field_widget.dart';
 
 class EventDateWidget extends StatelessWidget {
   final TextEditingController eventDateController;
@@ -12,7 +13,7 @@ class EventDateWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Event Date"),
-          TextFormField(
+          AppTextFormFieldWidget(
             controller: eventDateController,
             readOnly: true,
             onTap: () async {
@@ -36,29 +37,9 @@ class EventDateWidget extends StatelessWidget {
                     "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}";
               }
             },
-            decoration: InputDecoration(
-              isCollapsed: true,
-              suffixIcon: Padding(
-                padding: const EdgeInsets.only(right: 4.0),
-                child: Icon(Icons.event),
-              ),
-              suffixIconConstraints: BoxConstraints(),
-              contentPadding: EdgeInsets.all(4),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.outline,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.error,
-                ),
-              ),
+            suffixIcon: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(Icons.calendar_month),
             ),
           ),
         ],

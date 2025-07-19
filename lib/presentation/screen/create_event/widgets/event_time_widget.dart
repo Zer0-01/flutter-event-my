@@ -35,7 +35,7 @@ class EventTimeWidget extends StatelessWidget {
                       controller: eventTimeController,
                       readOnly: true,
                       suffixIcon: Padding(
-                        padding: const EdgeInsets.only(right: 4.0),
+                        padding: const EdgeInsets.only(right: 8.0),
                         child: Icon(Icons.av_timer),
                       ),
                       onTap: () async {

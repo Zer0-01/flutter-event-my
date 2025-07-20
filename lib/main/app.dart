@@ -46,6 +46,7 @@ class App extends StatelessWidget {
       primary: Color(0xff079669),
       secondary: Color(0xffd8f8e9),
       outline: Colors.grey.shade300,
+      onSurfaceVariant: Colors.grey.shade600,
     ),
   );
 

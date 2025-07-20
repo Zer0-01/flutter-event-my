@@ -29,7 +29,10 @@ class EventTimeWidget extends StatelessWidget {
                   children: [
                     Text(
                       "Start Time",
-                      style: Theme.of(context).textTheme.labelMedium,
+                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
                     AppTextFormFieldWidget(
                       controller: eventTimeController,
@@ -59,7 +62,10 @@ class EventTimeWidget extends StatelessWidget {
                   children: [
                     Text(
                       "Duration",
-                      style: Theme.of(context).textTheme.labelMedium,
+                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
                     AppTextFormFieldWidget(
                       controller: durationController,

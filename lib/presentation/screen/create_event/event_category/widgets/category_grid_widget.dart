@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_my_event/presentation/screen/create_event/bloc/create_event_bloc.dart';
 import 'package:flutter_my_event/utils/app_constants.dart';
 
 class CategoryGridWidget extends StatelessWidget {
@@ -13,43 +15,64 @@ class CategoryGridWidget extends StatelessWidget {
       EventCategoryEnum.religious,
       EventCategoryEnum.corporate,
     ];
-    return SliverPadding(
-      padding: const EdgeInsets.all(16),
-      sliver: SliverGrid.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-        ),
-
-        itemCount: eventCategoryList.length,
-        itemBuilder: (context, index) {
-          final EventCategoryEnum eventCategory = eventCategoryList[index];
-          final String eventCategoryName = eventCategory.name;
-          final IconData eventCategoryIcon = _getEventCategoryIcon(
-            eventCategory,
-          );
-          final Color eventCategoryColor = _getEventCategoryColor(
-            eventCategory,
-          );
-
-          return Container(
-            padding: const EdgeInsets.all(16),
-
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: eventCategoryColor,
+    return BlocBuilder<CreateEventBloc, CreateEventState>(
+      builder: (context, state) {
+        return SliverPadding(
+          padding: const EdgeInsets.all(16),
+          sliver: SliverGrid.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
             ),
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                spacing: 16,
-                children: [Icon(eventCategoryIcon), Text(eventCategoryName)],
-              ),
-            ),
-          );
-        },
-      ),
+
+            itemCount: eventCategoryList.length,
+            itemBuilder: (context, index) {
+              final EventCategoryEnum eventCategory = eventCategoryList[index];
+              final String eventCategoryName = eventCategory.name;
+              final IconData eventCategoryIcon = _getEventCategoryIcon(
+                eventCategory,
+              );
+              final Color eventCategoryColor = _getEventCategoryColor(
+                eventCategory,
+              );
+
+              return GestureDetector(
+                onTap: () {
+                  context.read<CreateEventBloc>().add(
+                    OnSelectCategoryEvent(category: eventCategoryName),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      width: 2,
+                      color:
+                          state.category == eventCategoryName
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.transparent,
+                    ),
+                    color: eventCategoryColor,
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 16,
+                      children: [
+                        Icon(eventCategoryIcon),
+                        Text(eventCategoryName),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 

@@ -23,7 +23,17 @@ class AppAutoRoute extends RootStackRouter {
         AutoRoute(page: EventSetupRoute.page, path: RoutePath.event),
       ],
     ),
-    AutoRoute(page: CreateEventSetupRoute.page, path: RoutePath.createEvent),
+    AutoRoute(
+      page: CreateEventSetupRoute.page,
+      path: RoutePath.createEvent,
+      children: [
+        AutoRoute(
+          page: EventBasicsSetupRoute.page,
+          path: RoutePath.eventBasics,
+          initial: true,
+        ),
+      ],
+    ),
   ];
 }
 
@@ -35,4 +45,5 @@ class RoutePath {
   static const String event = 'event';
   static const String saved = 'saved';
   static const String createEvent = '/create-event';
+  static const String eventBasics = 'event-basics';
 }

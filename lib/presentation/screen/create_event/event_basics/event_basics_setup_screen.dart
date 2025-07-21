@@ -8,6 +8,6 @@ class EventBasicsSetupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return EventBasicsScreen();
+    return const EventBasicsScreen();
   }
 }

@@ -8,6 +8,6 @@ class RootSetupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RootScreen();
+    return const RootScreen();
   }
 }

@@ -53,7 +53,7 @@ class _EventBasicsScreenState extends State<EventBasicsScreen> {
             spacing: 16,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              EventHeadlineWidget(
+              const EventHeadlineWidget(
                 title: "Event Basics",
                 description: "Tell us about your event - name, date and time.",
               ),
@@ -85,7 +85,7 @@ class _EventBasicsScreenState extends State<EventBasicsScreen> {
                                 _durationController.text.isEmpty)
                             ? null
                             : () {},
-                    child: Text("Next"),
+                    child: const Text("Next"),
                   ),
                 ),
               ),

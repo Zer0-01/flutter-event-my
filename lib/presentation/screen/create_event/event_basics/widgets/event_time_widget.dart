@@ -19,7 +19,7 @@ class EventTimeWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Event Time"),
+          const Text("Event Time"),
           Row(
             spacing: 8,
             children: [
@@ -37,8 +37,8 @@ class EventTimeWidget extends StatelessWidget {
                     AppTextFormFieldWidget(
                       controller: eventTimeController,
                       readOnly: true,
-                      suffixIcon: Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
+                      suffixIcon: const Padding(
+                        padding: EdgeInsets.only(right: 8.0),
                         child: Icon(Icons.av_timer),
                       ),
                       onTap: () async {
@@ -74,7 +74,7 @@ class EventTimeWidget extends StatelessWidget {
                         final Duration? duration = await showModalBottomSheet(
                           context: context,
                           builder: (context) {
-                            return DurationModalBottomSheetWidget();
+                            return const DurationModalBottomSheetWidget();
                           },
                         );
 

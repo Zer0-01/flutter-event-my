@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
               ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Column(
               spacing: 8,
               children: [EventTypeSectionWidget(), VendorTypeWidget()],

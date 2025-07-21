@@ -23,8 +23,8 @@ class AppTextFormFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         isCollapsed: true,
         suffixIcon: suffixIcon,
-        suffixIconConstraints: BoxConstraints(),
-        contentPadding: EdgeInsets.all(8),
+        suffixIconConstraints: const BoxConstraints(),
+        contentPadding: const EdgeInsets.all(8),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
           borderRadius: BorderRadius.circular(8),

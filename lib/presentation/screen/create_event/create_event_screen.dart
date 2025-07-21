@@ -16,7 +16,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => AppRouter().pop(context),
-          icon: Icon(Icons.chevron_left),
+          icon: const Icon(Icons.chevron_left),
         ),
         title: Text(
           "Create Your Event",
@@ -25,7 +25,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
-      body: AutoRouter(),
+      body: const AutoRouter(),
     );
   }
 }

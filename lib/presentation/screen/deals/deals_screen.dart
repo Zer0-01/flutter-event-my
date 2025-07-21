@@ -5,6 +5,6 @@ class DealsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Deals')));
+    return const Scaffold(body: Center(child: Text('Deals')));
   }
 }

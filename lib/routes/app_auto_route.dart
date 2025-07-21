@@ -4,7 +4,7 @@ import 'package:flutter_my_event/routes/app_auto_route.gr.dart';
 @AutoRouterConfig()
 class AppAutoRoute extends RootStackRouter {
   @override
-  RouteType get defaultRouteType => RouteType.cupertino();
+  RouteType get defaultRouteType => const RouteType.cupertino();
   @override
   List<AutoRoute> get routes => [
     AutoRoute(

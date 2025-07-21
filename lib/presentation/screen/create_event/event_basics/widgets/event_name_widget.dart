@@ -13,7 +13,7 @@ class EventNameWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Event Name"),
+          const Text("Event Name"),
           AppTextFormFieldWidget(controller: eventNameController),
         ],
       ),

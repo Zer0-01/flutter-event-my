@@ -21,8 +21,8 @@ class RootScreen extends StatelessWidget {
         onPressed: () {
           AppRouter().push(context, RoutePath.createEvent);
         },
-        shape: CircleBorder(),
-        child: Icon(Icons.add),
+        shape: const CircleBorder(),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBuilder: (_, tabsRouter) {

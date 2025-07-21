@@ -12,7 +12,7 @@ class EventDateWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Event Date"),
+          const Text("Event Date"),
           AppTextFormFieldWidget(
             controller: eventDateController,
             readOnly: true,
@@ -37,8 +37,8 @@ class EventDateWidget extends StatelessWidget {
                     "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}";
               }
             },
-            suffixIcon: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+            suffixIcon: const Padding(
+              padding: EdgeInsets.only(right: 8.0),
               child: Icon(Icons.calendar_month),
             ),
           ),

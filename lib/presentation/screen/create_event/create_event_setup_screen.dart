@@ -8,6 +8,6 @@ class CreateEventSetupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CreateEventScreen();
+    return const CreateEventScreen();
   }
 }

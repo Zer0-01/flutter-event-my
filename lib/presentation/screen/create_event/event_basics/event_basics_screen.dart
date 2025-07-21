@@ -48,58 +48,61 @@ class _EventBasicsScreenState extends State<EventBasicsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            spacing: 16,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const EventHeadlineWidget(
-                title: "Event Basics",
-                description: "Tell us about your event - name, date and time.",
-              ),
-              EventNameWidget(eventNameController: _eventNameController),
-              EventDateWidget(eventDateController: _eventDateController),
-              EventTimeWidget(
-                eventTimeController: _startTimeController,
-                durationController: _durationController,
-              ),
-              if (_eventNameController.text.isNotEmpty &&
-                  _eventDateController.text.isNotEmpty &&
-                  _startTimeController.text.isNotEmpty &&
-                  _durationController.text.isNotEmpty)
-                EventSummaryWidget(
-                  eventName: _eventNameController.text,
-                  eventDate: _eventDateController.text,
-                  eventTime: _startTimeController.text,
-                  eventDuration: _durationController.text,
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              spacing: 16,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const EventHeadlineWidget(
+                  title: "Event Basics",
+                  description:
+                      "Tell us about your event - name, date and time.",
                 ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: FilledButton(
-                    onPressed:
-                        (_eventNameController.text.isEmpty ||
-                                _eventDateController.text.isEmpty ||
-                                _startTimeController.text.isEmpty ||
-                                _durationController.text.isEmpty)
-                            ? null
-                            : () {
-                              AppRouter().push(
-                                context,
-                                RoutePath.eventCategory,
-                              );
-                            },
-                    child: const Text("Next"),
+                EventNameWidget(eventNameController: _eventNameController),
+                EventDateWidget(eventDateController: _eventDateController),
+                EventTimeWidget(
+                  eventTimeController: _startTimeController,
+                  durationController: _durationController,
+                ),
+                if (_eventNameController.text.isNotEmpty &&
+                    _eventDateController.text.isNotEmpty &&
+                    _startTimeController.text.isNotEmpty &&
+                    _durationController.text.isNotEmpty)
+                  EventSummaryWidget(
+                    eventName: _eventNameController.text,
+                    eventDate: _eventDateController.text,
+                    eventTime: _startTimeController.text,
+                    eventDuration: _durationController.text,
+                  ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: FilledButton(
+                      onPressed:
+                          (_eventNameController.text.isEmpty ||
+                                  _eventDateController.text.isEmpty ||
+                                  _startTimeController.text.isEmpty ||
+                                  _durationController.text.isEmpty)
+                              ? null
+                              : () {
+                                AppRouter().push(
+                                  context,
+                                  RoutePath.eventCategory,
+                                );
+                              },
+                      child: const Text("Next"),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

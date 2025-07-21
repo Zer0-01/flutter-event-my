@@ -4,6 +4,8 @@ import 'package:flutter_my_event/presentation/screen/create_event/event_basics/w
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_name_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_summary_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_time_widget.dart';
+import 'package:flutter_my_event/routes/app_auto_route.dart';
+import 'package:flutter_my_event/routes/app_router.dart';
 
 class EventBasicsScreen extends StatefulWidget {
   const EventBasicsScreen({super.key});
@@ -84,7 +86,12 @@ class _EventBasicsScreenState extends State<EventBasicsScreen> {
                                 _startTimeController.text.isEmpty ||
                                 _durationController.text.isEmpty)
                             ? null
-                            : () {},
+                            : () {
+                              AppRouter().push(
+                                context,
+                                RoutePath.eventCategory,
+                              );
+                            },
                     child: const Text("Next"),
                   ),
                 ),

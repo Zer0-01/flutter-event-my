@@ -14,6 +14,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        surfaceTintColor: Theme.of(context).colorScheme.surface,
         leading: IconButton(
           onPressed: () => AppRouter().pop(context),
           icon: const Icon(Icons.chevron_left),

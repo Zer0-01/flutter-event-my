@@ -38,11 +38,15 @@ class RootScreen extends StatelessWidget {
           child: BottomNavigationBar(
             showUnselectedLabels: true,
             type: BottomNavigationBarType.fixed,
-            currentIndex: tabsRouter.activeIndex,
+            currentIndex:
+                tabsRouter.activeIndex > 1
+                    ? tabsRouter.activeIndex + 1
+                    : tabsRouter.activeIndex,
             onTap: (index) {
-              // Skip the dummy middle index
-              if (index == 2) return;
-              tabsRouter.setActiveIndex(index);
+              if (index == 2) return; // middle (FAB) tap - do nothing
+
+              final correctedIndex = index > 2 ? index - 1 : index;
+              tabsRouter.setActiveIndex(correctedIndex);
             },
             unselectedItemColor: Theme.of(context).colorScheme.outline,
             selectedItemColor: Theme.of(context).colorScheme.primary,

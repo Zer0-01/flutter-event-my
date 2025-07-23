@@ -1,0 +1,92 @@
+{
+    "venues": [
+        {
+            "id": "venue_001",
+            "place_name": "The Green Garden",
+            "description": "A serene outdoor venue perfect for weddings and garden parties.",
+            "tags": [
+                "outdoor",
+                "wedding",
+                "nature"
+            ],
+            "location": {
+                "address": "123 Blossom Street, Petaling Jaya, Selangor",
+                "latitude": 3.1076,
+                "longitude": 101.6068
+            },
+            "rating": 4.7,
+            "offered": [
+                "Event planning support",
+                "Catering services",
+                "Decorations",
+                "Parking space"
+            ]
+        },
+        {
+            "id": "venue_002",
+            "place_name": "Skyline Rooftop",
+            "description": "Modern rooftop venue with skyline views, ideal for corporate events and celebrations.",
+            "tags": [
+                "rooftop",
+                "corporate",
+                "nightlife"
+            ],
+            "location": {
+                "address": "88 Skyview Avenue, Kuala Lumpur",
+                "latitude": 3.139,
+                "longitude": 101.6869
+            },
+            "rating": 4.5,
+            "offered": [
+                "Bar & beverages",
+                "Lighting & sound system",
+                "Security personnel",
+                "Private lounge area"
+            ]
+        },
+        {
+            "id": "venue_003",
+            "place_name": "Heritage Hall",
+            "description": "Classic indoor venue housed in a colonial building with antique charm.",
+            "tags": [
+                "indoor",
+                "heritage",
+                "classic"
+            ],
+            "location": {
+                "address": "45 Jalan Tun H.S. Lee, Kuala Lumpur",
+                "latitude": 3.1472,
+                "longitude": 101.6953
+            },
+            "rating": 4.3,
+            "offered": [
+                "AV equipment",
+                "Catering partnerships",
+                "Stage setup",
+                "Air-conditioning"
+            ]
+        },
+        {
+            "id": "venue_004",
+            "place_name": "The Barn Loft",
+            "description": "Rustic barn-style venue for intimate gatherings and themed events.",
+            "tags": [
+                "rustic",
+                "intimate",
+                "barn"
+            ],
+            "location": {
+                "address": "Lot 29, Kampung Sungai Penchala, Kuala Lumpur",
+                "latitude": 3.1714,
+                "longitude": 101.6372
+            },
+            "rating": 4.6,
+            "offered": [
+                "Decor lighting",
+                "In-house DJ",
+                "Photo booth",
+                "DIY food stations"
+            ]
+        }
+    ]
+}

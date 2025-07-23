@@ -18,7 +18,7 @@ class CategoryGridWidget extends StatelessWidget {
     return BlocBuilder<CreateEventBloc, CreateEventState>(
       builder: (context, state) {
         return SliverPadding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           sliver: SliverGrid.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

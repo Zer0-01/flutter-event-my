@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_my_event/routes/app_auto_route.dart';
 import 'package:flutter_my_event/routes/app_router.dart';
 
 class CategoryNavigationButtonWidget extends StatelessWidget {
@@ -35,7 +36,9 @@ class CategoryNavigationButtonWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  AppRouter().push(context, RoutePath.venue);
+                },
                 child: const Text("Next"),
               ),
             ),

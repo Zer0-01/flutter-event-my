@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_date_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_headline_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_name_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_summary_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_time_widget.dart';
+import 'package:flutter_my_event/presentation/screen/create_event/widgets/exit_create_event_dialog_widget.dart';
 import 'package:flutter_my_event/routes/app_auto_route.dart';
 import 'package:flutter_my_event/routes/app_router.dart';
 
@@ -49,59 +51,78 @@ class _EventBasicsScreenState extends State<EventBasicsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              spacing: 16,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const EventHeadlineWidget(
-                  title: "Event Basics",
-                  description:
-                      "Tell us about your event - name, date and time.",
-                ),
-                EventNameWidget(eventNameController: _eventNameController),
-                EventDateWidget(eventDateController: _eventDateController),
-                EventTimeWidget(
-                  eventTimeController: _startTimeController,
-                  durationController: _durationController,
-                ),
-                if (_eventNameController.text.isNotEmpty &&
-                    _eventDateController.text.isNotEmpty &&
-                    _startTimeController.text.isNotEmpty &&
-                    _durationController.text.isNotEmpty)
-                  EventSummaryWidget(
-                    eventName: _eventNameController.text,
-                    eventDate: _eventDateController.text,
-                    eventTime: _startTimeController.text,
-                    eventDuration: _durationController.text,
+      body: PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (didPop, result) async {
+          if (didPop) {
+            return;
+          } else {
+            final bool? isExit = await showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) => const ExitCreateEventDialogWidget(),
+            );
+
+            if (isExit == true) {
+              if (!context.mounted) return;
+              context.router.root.pop();
+            }
+          }
+        },
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                spacing: 16,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const EventHeadlineWidget(
+                    title: "Event Basics",
+                    description:
+                        "Tell us about your event - name, date and time.",
                   ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: FilledButton(
-                      onPressed:
-                          (_eventNameController.text.isEmpty ||
-                                  _eventDateController.text.isEmpty ||
-                                  _startTimeController.text.isEmpty ||
-                                  _durationController.text.isEmpty)
-                              ? null
-                              : () {
-                                AppRouter().push(
-                                  context,
-                                  RoutePath.eventCategory,
-                                );
-                              },
-                      child: const Text("Next"),
+                  EventNameWidget(eventNameController: _eventNameController),
+                  EventDateWidget(eventDateController: _eventDateController),
+                  EventTimeWidget(
+                    eventTimeController: _startTimeController,
+                    durationController: _durationController,
+                  ),
+                  if (_eventNameController.text.isNotEmpty &&
+                      _eventDateController.text.isNotEmpty &&
+                      _startTimeController.text.isNotEmpty &&
+                      _durationController.text.isNotEmpty)
+                    EventSummaryWidget(
+                      eventName: _eventNameController.text,
+                      eventDate: _eventDateController.text,
+                      eventTime: _startTimeController.text,
+                      eventDuration: _durationController.text,
+                    ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: FilledButton(
+                        onPressed:
+                            (_eventNameController.text.isEmpty ||
+                                    _eventDateController.text.isEmpty ||
+                                    _startTimeController.text.isEmpty ||
+                                    _durationController.text.isEmpty)
+                                ? null
+                                : () {
+                                  AppRouter().push(
+                                    context,
+                                    RoutePath.eventCategory,
+                                  );
+                                },
+                        child: const Text("Next"),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_my_event/presentation/screen/create_event/widgets/exit_create_event_dialog_widget.dart';
 import 'package:flutter_my_event/routes/app_router.dart';
 
 class CreateEventScreen extends StatefulWidget {
@@ -17,7 +18,19 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         backgroundColor: Theme.of(context).colorScheme.surface,
         surfaceTintColor: Theme.of(context).colorScheme.surface,
         leading: IconButton(
-          onPressed: () => AppRouter().pop(context),
+          onPressed: () async {
+            final bool? isExit = await showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) {
+                return const ExitCreateEventDialogWidget();
+              },
+            );
+            if (isExit == true) {
+              if (!context.mounted) return;
+              AppRouter().pop(context);
+            }
+          },
           icon: const Icon(Icons.chevron_left),
         ),
         title: Text(

@@ -2,77 +2,94 @@ import 'package:logger/logger.dart';
 
 enum LogFormat { simple, extended }
 
-/// A simple logger class that wraps the [Logger] class.
-///
-/// This class provides a simple way to log messages with different log levels.
-/// It also provides a way to configure the logger with different options.
-///
+/// A structured and configurable logger wrapper using the `logger` package.
 class AppLogger {
   static late Logger _logger;
   static late Level _level;
   static late LogFormat _logFormat;
-  late String _name;
+  late final String _name;
 
-  AppLogger() {
-    _name = "Logger";
-  }
+  AppLogger({String name = "Logger"}) : _name = name;
 
   AppLogger.getLogger(String name) {
     _name = name;
   }
 
+  /// Configure the logger globally. Must be called before using the logger.
   static void configure({
     required bool isProduction,
-    bool logToFile = false,
-    LogFormat logFormat = LogFormat.simple,
+    LogFormat logFormat = LogFormat.extended,
+    bool logToFile = false, // Reserved for future file output support
   }) {
     _level = isProduction ? Level.info : Level.debug;
     _logFormat = logFormat;
-    final simple = SimplePrinter(printTime: true);
-    final pretty = PrettyPrinter(
-      dateTimeFormat: DateTimeFormat.dateAndTime,
-      methodCount: 2,
-    );
-    LogPrinter printer = _logFormat == LogFormat.simple ? simple : pretty;
-    LogOutput output =
-        ConsoleOutput(); // logToFile ? FileOutput(file: File('log.txt'), overrideExisting: true) : ConsoleOutput(); Unsupported operation: Not supported on this platform.
-    LogFilter filter = isProduction ? ProductionFilter() : DevelopmentFilter();
+
+    final LogPrinter printer =
+        _logFormat == LogFormat.simple
+            ? SimplePrinter(printTime: true)
+            : _CustomPrettyPrinter();
+
     _logger = Logger(
-      filter: filter,
-      printer: printer,
-      output: output,
       level: _level,
+      printer: printer,
+      filter: isProduction ? ProductionFilter() : DevelopmentFilter(),
+      output: ConsoleOutput(),
     );
   }
 
-  // generate log methods with message and arguments
-  String _msg(dynamic message, [List<dynamic>? args]) {
-    String msg = "$_name : $message";
+  // Helper to format messages
+  String _format(dynamic message, [List<dynamic>? args]) {
+    var formatted = '[$_name] $message';
     if (args != null) {
-      for (int i = 0; i < args.length; i++) {
-        msg = msg.replaceFirst("{}", args[i].toString());
+      for (var arg in args) {
+        formatted = formatted.replaceFirst("{}", arg.toString());
       }
     }
-    return msg;
+    return formatted;
   }
 
   void trace(dynamic message, [List<Object?>? args]) =>
-      _logger.t(_msg(message, args));
+      _logger.t(_format(message, args));
 
   void debug(dynamic message, [List<Object?>? args]) =>
-      _logger.d(_msg(message, args));
+      _logger.d(_format(message, args));
 
   void info(dynamic message, [List<Object?>? args]) =>
-      _logger.i(_msg(message, args));
+      _logger.i(_format(message, args));
 
   void warn(dynamic message, [List<Object?>? args]) =>
-      _logger.w(_msg(message, args));
+      _logger.w(_format(message, args));
 
   void error(dynamic message, [List<Object?>? args]) =>
-      _logger.e(_msg(message, args));
+      _logger.e(_format(message, args));
 
   @override
-  String toString() {
-    return "AppLogger($_name, ${_level.name}, ${_logFormat.name})";
+  String toString() =>
+      "AppLogger(name: $_name, level: ${_level.name}, format: ${_logFormat.name})";
+}
+
+/// Custom PrettyPrinter with cleaner output
+class _CustomPrettyPrinter extends PrettyPrinter {
+  _CustomPrettyPrinter()
+    : super(
+        methodCount: 1,
+        errorMethodCount: 3,
+        lineLength: 100,
+        colors: true,
+        printEmojis: true,
+        dateTimeFormat: DateTimeFormat.dateAndTime,
+      );
+
+  @override
+  List<String> log(LogEvent event) {
+    final color = levelColors?[event.level] ?? const AnsiColor.none();
+    final emoji = levelEmojis?[event.level] ?? '';
+    final time = DateTime.now().toIso8601String();
+
+    return [
+      color(
+        '$emoji [$time] ${event.level.name.toUpperCase()} → ${event.message}',
+      ),
+    ];
   }
 }

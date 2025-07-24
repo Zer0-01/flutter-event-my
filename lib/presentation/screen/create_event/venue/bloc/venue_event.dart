@@ -9,4 +9,7 @@ sealed class VenueEvent extends Equatable {
 
 class OnInitVenueEvent extends VenueEvent {
   const OnInitVenueEvent();
+
+  @override
+  List<Object> get props => [];
 }

@@ -12,10 +12,8 @@ class VenueSetupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (context) =>
-              VenueBloc(venueRepository: VenueRepository())
-                ..add(const OnInitVenueEvent()),
+      create: (context) => VenueBloc(venueRepository: VenueRepository()),
+
       child: const VenueScreen(),
     );
   }

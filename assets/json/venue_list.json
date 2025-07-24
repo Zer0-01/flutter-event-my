@@ -1,7 +1,7 @@
 {
     "venues": [
         {
-            "id": "venue_001",
+            "id": 1,
             "place_name": "The Green Garden",
             "description": "A serene outdoor venue perfect for weddings and garden parties.",
             "tags": [
@@ -23,7 +23,7 @@
             ]
         },
         {
-            "id": "venue_002",
+            "id": 2,
             "place_name": "Skyline Rooftop",
             "description": "Modern rooftop venue with skyline views, ideal for corporate events and celebrations.",
             "tags": [
@@ -45,7 +45,7 @@
             ]
         },
         {
-            "id": "venue_003",
+            "id": 3,
             "place_name": "Heritage Hall",
             "description": "Classic indoor venue housed in a colonial building with antique charm.",
             "tags": [
@@ -67,7 +67,7 @@
             ]
         },
         {
-            "id": "venue_004",
+            "id": 4,
             "place_name": "The Barn Loft",
             "description": "Rustic barn-style venue for intimate gatherings and themed events.",
             "tags": [

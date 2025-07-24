@@ -1,13 +1,11 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'language_event.dart';
 part 'language_state.dart';
 
 class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
-  LanguageBloc() : super(LanguageInitial()) {
-    on<LanguageEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  LanguageBloc() : super(const LanguageState()) {
+    on<LanguageEvent>((event, emit) {});
   }
 }

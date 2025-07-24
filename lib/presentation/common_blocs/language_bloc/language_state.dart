@@ -1,6 +1,8 @@
 part of 'language_bloc.dart';
 
-@immutable
-sealed class LanguageState {}
+class LanguageState extends Equatable {
+  const LanguageState();
 
-final class LanguageInitial extends LanguageState {}
+  @override
+  List<Object> get props => [];
+}

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_my_event/presentation/screen/create_event/venue/bloc/venue_bloc.dart';
 
 class VenueCardWidget extends StatelessWidget {
+  final int id;
   final String name;
   final String description;
   final String address;
   final List<String> tags;
   final List<String> offered;
+  final bool isSelected;
+
   const VenueCardWidget({
     super.key,
     required this.name,
@@ -13,11 +18,22 @@ class VenueCardWidget extends StatelessWidget {
     required this.address,
     required this.tags,
     required this.offered,
+    required this.id,
+    required this.isSelected,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: BorderSide(
+          color:
+              isSelected
+                  ? Theme.of(context).colorScheme.primary
+                  : Colors.transparent,
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -94,6 +110,35 @@ class VenueCardWidget extends StatelessWidget {
                         ),
                       )
                       .toList(),
+            ),
+            Row(
+              spacing: 8,
+              children: [
+                Expanded(
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: const Text("View Details"),
+                  ),
+                ),
+                Expanded(
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    onPressed: () {
+                      context.read<VenueBloc>().add(OnSelectVenueEvent(id: id));
+                    },
+                    child: const Text("Select"),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

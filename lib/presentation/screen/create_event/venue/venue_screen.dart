@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/venue/bloc/venue_bloc.dart';
+import 'package:flutter_my_event/presentation/screen/create_event/venue/widgets/venue_bottom_button_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/venue/widgets/venue_headline_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/venue/widgets/venue_list_widget.dart';
 
@@ -24,6 +25,7 @@ class _VenueScreenState extends State<VenueScreen> {
       body: CustomScrollView(
         slivers: [VenueHeadlineWidget(), VenueListWidget()],
       ),
+      bottomNavigationBar: VenueBottomButtonWidget(),
     );
   }
 }

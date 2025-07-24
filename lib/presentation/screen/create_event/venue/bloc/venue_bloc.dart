@@ -15,6 +15,7 @@ class VenueBloc extends Bloc<VenueEvent, VenueState> {
     : _venueRepository = venueRepository,
       super(const VenueState()) {
     on<OnInitVenueEvent>(_onInitVenue);
+    on<OnSelectVenueEvent>(_onSelectVenue);
   }
 
   Future<void> _onInitVenue(
@@ -39,5 +40,10 @@ class VenueBloc extends Bloc<VenueEvent, VenueState> {
       _logger.error(e);
       emit(state.copyWith(fetchVenueStatus: FetchVenueStatus.error));
     }
+  }
+
+  void _onSelectVenue(OnSelectVenueEvent event, Emitter<VenueState> emit) {
+    _logger.debug("onSelectVenue");
+    emit(state.copyWith(selectedVenueId: event.id));
   }
 }

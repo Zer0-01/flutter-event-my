@@ -17,17 +17,21 @@ class VenueListWidget extends StatelessWidget {
             itemCount: state.venues.length,
             itemBuilder: (context, index) {
               final Venue venue = state.venues[index];
+              final int id = venue.id;
               final String name = venue.placeName;
               final String address = venue.location.address;
               final String description = venue.description;
               final List<String> tags = venue.tags;
               final List<String> offered = venue.offered;
+              final bool isSelected = id == state.selectedVenueId;
               return VenueCardWidget(
+                id: id,
                 name: name,
                 description: description,
                 address: address,
                 tags: tags,
                 offered: offered,
+                isSelected: isSelected,
               );
             },
             separatorBuilder: (context, index) => const SizedBox(height: 4),

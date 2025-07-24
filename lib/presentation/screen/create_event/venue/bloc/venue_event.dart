@@ -13,3 +13,12 @@ class OnInitVenueEvent extends VenueEvent {
   @override
   List<Object> get props => [];
 }
+
+class OnSelectVenueEvent extends VenueEvent {
+  final int id;
+
+  const OnSelectVenueEvent({required this.id});
+
+  @override
+  List<Object> get props => [id];
+}

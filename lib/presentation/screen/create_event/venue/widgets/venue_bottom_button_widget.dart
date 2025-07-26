@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/venue/bloc/venue_bloc.dart';
+import 'package:flutter_my_event/routes/app_auto_route.dart';
 
 class VenueBottomButtonWidget extends StatelessWidget {
   const VenueBottomButtonWidget({super.key});
@@ -46,7 +47,12 @@ class VenueBottomButtonWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    onPressed: state.selectedVenueId.isNegative ? null : () {},
+                    onPressed:
+                        state.selectedVenueId.isNegative
+                            ? null
+                            : () {
+                              context.router.pushPath(RoutePath.catering);
+                            },
                     child: const Text("Next"),
                   ),
                 ),

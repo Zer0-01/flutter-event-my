@@ -1,0 +1,92 @@
+{
+    "caterers": [
+        {
+            "id": 1,
+            "company_name": "Flavours & Forks",
+            "description": "Premium catering service offering a fusion of Asian and Western cuisine for weddings and formal events.",
+            "tags": [
+                "wedding",
+                "fusion",
+                "premium"
+            ],
+            "location": {
+                "address": "25 Jalan Setia Indah, Shah Alam, Selangor",
+                "latitude": 3.0803,
+                "longitude": 101.5187
+            },
+            "rating": 4.8,
+            "services": [
+                "Buffet setup",
+                "Live cooking stations",
+                "Custom menu planning",
+                "Service staff"
+            ]
+        },
+        {
+            "id": 2,
+            "company_name": "BiteBox Catering",
+            "description": "Trendy catering provider specializing in gourmet lunch boxes and casual corporate meals.",
+            "tags": [
+                "corporate",
+                "modern",
+                "casual"
+            ],
+            "location": {
+                "address": "17 Jalan Teknologi 3/6E, Kota Damansara, Selangor",
+                "latitude": 3.1578,
+                "longitude": 101.6023
+            },
+            "rating": 4.5,
+            "services": [
+                "Lunch box delivery",
+                "Event catering",
+                "Dietary-specific meals",
+                "On-time logistics"
+            ]
+        },
+        {
+            "id": 3,
+            "company_name": "Heritage Kitchen",
+            "description": "Traditional Malaysian dishes crafted with a modern twist, perfect for cultural and family events.",
+            "tags": [
+                "traditional",
+                "malaysian",
+                "family"
+            ],
+            "location": {
+                "address": "12 Jalan Tun Abdul Razak, Kuala Lumpur",
+                "latitude": 3.1502,
+                "longitude": 101.7074
+            },
+            "rating": 4.6,
+            "services": [
+                "Buffet & plated options",
+                "Halal-certified meals",
+                "Cultural-themed setups",
+                "Full-service dining"
+            ]
+        },
+        {
+            "id": 4,
+            "company_name": "GreenBites",
+            "description": "Eco-friendly catering with plant-based menus tailored for health-conscious and sustainable events.",
+            "tags": [
+                "vegetarian",
+                "eco-friendly",
+                "healthy"
+            ],
+            "location": {
+                "address": "56 Jalan Bukit Pantai, Bangsar, Kuala Lumpur",
+                "latitude": 3.1295,
+                "longitude": 101.6667
+            },
+            "rating": 4.4,
+            "services": [
+                "Plant-based meals",
+                "Sustainable packaging",
+                "Organic ingredients",
+                "Nutrition consulting"
+            ]
+        }
+    ]
+}

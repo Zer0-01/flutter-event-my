@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_my_event/presentation/common_blocs/language_bloc/language_bloc.dart';
 import 'package:flutter_my_event/routes/app_auto_route.dart';
+import 'package:flutter_my_event/routes/app_auto_router_observer.dart';
 
 /// Main application widget. This widget is the root of your application.
 ///
@@ -54,7 +55,9 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context) => LanguageBloc())],
       child: MaterialApp.router(
-        routerConfig: _appRouter.config(),
+        routerConfig: _appRouter.config(
+          navigatorObservers: () => [AppAutoRouterObserver()],
+        ),
         theme: light,
         darkTheme: dark,
         debugShowCheckedModeBanner: false,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_my_event/presentation/common_widgets/app_text_form_field_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/duration_modal_bottom_sheet_widget.dart';
@@ -71,15 +72,17 @@ class EventTimeWidget extends StatelessWidget {
                       controller: durationController,
                       readOnly: true,
                       onTap: () async {
-                        final Duration? duration = await showModalBottomSheet(
-                          context: context,
-                          builder: (context) {
-                            return const DurationModalBottomSheetWidget();
-                          },
-                        );
+                        final int? selectedDuration =
+                            await showModalBottomSheet(
+                              useRootNavigator: true,
+                              context: context,
+                              builder:
+                                  (context) =>
+                                      const DurationModalBottomSheetWidget(),
+                            );
 
-                        if (duration != null) {
-                          durationController.text = "${duration.inHours} hrs";
+                        if (selectedDuration != null) {
+                          durationController.text = selectedDuration.toString();
                         }
                       },
                     ),

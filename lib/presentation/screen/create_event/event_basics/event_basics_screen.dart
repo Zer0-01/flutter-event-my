@@ -1,13 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_basic_bottom_button_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_date_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_headline_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_name_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_summary_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/event_time_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/widgets/exit_create_event_dialog_widget.dart';
-import 'package:flutter_my_event/routes/app_auto_route.dart';
-import 'package:flutter_my_event/routes/app_router.dart';
 
 class EventBasicsScreen extends StatefulWidget {
   const EventBasicsScreen({super.key});
@@ -97,32 +96,17 @@ class _EventBasicsScreenState extends State<EventBasicsScreen> {
                       eventTime: _startTimeController.text,
                       eventDuration: _durationController.text,
                     ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: FilledButton(
-                        onPressed:
-                            (_eventNameController.text.isEmpty ||
-                                    _eventDateController.text.isEmpty ||
-                                    _startTimeController.text.isEmpty ||
-                                    _durationController.text.isEmpty)
-                                ? null
-                                : () {
-                                  AppRouter().push(
-                                    context,
-                                    RoutePath.eventCategory,
-                                  );
-                                },
-                        child: const Text("Next"),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: EventBasicBottomButtonWidget(
+        eventNameController: _eventNameController,
+        eventDateController: _eventDateController,
+        startTimeController: _startTimeController,
+        durationController: _durationController,
       ),
     );
   }

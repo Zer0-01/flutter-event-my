@@ -13,9 +13,10 @@ class EventCategoryScreen extends StatelessWidget {
         slivers: [
           CategoryHeadlineWidget(),
           CategoryGridWidget(),
-          CategoryNavigationButtonWidget(),
+          //CategoryNavigationButtonWidget(),
         ],
       ),
+      bottomNavigationBar: CategoryNavigationButtonWidget(),
     );
   }
 }

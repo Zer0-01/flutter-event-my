@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_my_event/presentation/common_widgets/app_text_form_field_widget.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/event_basics/widgets/duration_modal_bottom_sheet_widget.dart';

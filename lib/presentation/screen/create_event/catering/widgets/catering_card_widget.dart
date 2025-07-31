@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_my_event/presentation/screen/create_event/catering/bloc/catering_bloc.dart';
+import 'package:flutter_my_event/presentation/screen/create_event/bloc/create_event_bloc.dart';
 
 class CateringCardWidget extends StatelessWidget {
   final int id;
@@ -139,8 +139,8 @@ class CateringCardWidget extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      context.read<CateringBloc>().add(
-                        OnSelectCatererEvent(selectedCatererId: id),
+                      context.read<CreateEventBloc>().add(
+                        OnSelectCateringEvent(selectedCateringId: id),
                       );
                     },
                     child: const Text("Select"),

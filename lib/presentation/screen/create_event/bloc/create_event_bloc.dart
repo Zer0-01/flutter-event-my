@@ -10,6 +10,7 @@ class CreateEventBloc extends Bloc<CreateEventEvent, CreateEventState> {
 
   CreateEventBloc() : super(const CreateEventState()) {
     on<OnSelectCategoryEvent>(_onSelectCategory);
+    on<OnSelectCateringEvent>(_onSelectCatering);
   }
 
   void _onSelectCategory(
@@ -18,5 +19,13 @@ class CreateEventBloc extends Bloc<CreateEventEvent, CreateEventState> {
   ) {
     _logger.debug('OnSelectCategoryEvent: ${event.category}');
     emit(state.copyWith(category: event.category));
+  }
+
+  void _onSelectCatering(
+    OnSelectCateringEvent event,
+    Emitter<CreateEventState> emit,
+  ) {
+    _logger.debug('OnSelectCateringEvent: ${event.selectedCateringId}');
+    emit(state.copyWith(selectedCateringId: event.selectedCateringId));
   }
 }

@@ -40,6 +40,7 @@ class AppAutoRoute extends RootStackRouter {
         AutoRoute(page: CateringSetupRoute.page, path: RoutePath.catering),
       ],
     ),
+    AutoRoute(page: LoginSetupRoute.page, path: RoutePath.login),
   ];
 }
 
@@ -55,4 +56,5 @@ class RoutePath {
   static const String eventCategory = 'event-category';
   static const String venue = 'venue';
   static const String catering = 'catering';
+  static const String login = '/login';
 }

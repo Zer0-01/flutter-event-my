@@ -5,6 +5,7 @@ class AppTextFormFieldWidget extends StatelessWidget {
   final void Function()? onTap;
   final Widget? suffixIcon;
   final bool readOnly;
+  final String? hintText;
 
   const AppTextFormFieldWidget({
     super.key,
@@ -12,6 +13,7 @@ class AppTextFormFieldWidget extends StatelessWidget {
     this.onTap,
     this.suffixIcon,
     this.readOnly = false,
+    this.hintText,
   });
 
   @override
@@ -21,6 +23,7 @@ class AppTextFormFieldWidget extends StatelessWidget {
       readOnly: readOnly,
       onTap: onTap,
       decoration: InputDecoration(
+        hintText: hintText,
         isCollapsed: true,
         suffixIcon: suffixIcon,
         suffixIconConstraints: const BoxConstraints(),

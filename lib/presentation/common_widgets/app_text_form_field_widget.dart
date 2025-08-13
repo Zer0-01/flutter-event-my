@@ -6,6 +6,7 @@ class AppTextFormFieldWidget extends StatelessWidget {
   final Widget? suffixIcon;
   final bool readOnly;
   final String? hintText;
+  final bool obscureText;
 
   const AppTextFormFieldWidget({
     super.key,
@@ -14,6 +15,7 @@ class AppTextFormFieldWidget extends StatelessWidget {
     this.suffixIcon,
     this.readOnly = false,
     this.hintText,
+    this.obscureText = false,
   });
 
   @override
@@ -22,6 +24,7 @@ class AppTextFormFieldWidget extends StatelessWidget {
       controller: controller,
       readOnly: readOnly,
       onTap: onTap,
+      obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
         isCollapsed: true,

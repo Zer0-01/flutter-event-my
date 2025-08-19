@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_my_event/routes/app_auto_route.dart';
 import 'package:flutter_my_event/routes/app_auto_route.gr.dart';
 import 'package:flutter_my_event/routes/app_router.dart';
+import 'package:flutter_my_event/utils/extensions.dart';
 
 class RootScreen extends StatelessWidget {
   const RootScreen({super.key});
@@ -50,20 +51,23 @@ class RootScreen extends StatelessWidget {
             },
             unselectedItemColor: Theme.of(context).colorScheme.outline,
             selectedItemColor: Theme.of(context).colorScheme.primary,
-            items: const [
-              BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
+            items: [
               BottomNavigationBarItem(
+                label: context.l10n.home,
+                icon: const Icon(Icons.home),
+              ),
+              const BottomNavigationBarItem(
                 label: 'My Events',
                 icon: Icon(Icons.event),
               ),
 
-              BottomNavigationBarItem(label: '', icon: SizedBox.shrink()),
+              const BottomNavigationBarItem(label: '', icon: SizedBox.shrink()),
 
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                 label: 'Saved',
                 icon: Icon(CupertinoIcons.heart_fill),
               ),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                 label: 'Profile',
                 icon: Icon(Icons.person),
               ),

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_my_event/presentation/common_blocs/language_bloc/language_bloc.dart';
 import 'package:flutter_my_event/routes/app_auto_route.dart';
 import 'package:flutter_my_event/routes/app_auto_router_observer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// Main application widget. This widget is the root of your application.
 ///
@@ -61,6 +62,8 @@ class App extends StatelessWidget {
         theme: light,
         darkTheme: dark,
         debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
       ),
     );
   }

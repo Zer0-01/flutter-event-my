@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_my_event/presentation/common_widgets/app_loading_dialog_widget.dart';
 import 'package:flutter_my_event/routes/app_auto_route.dart';
 
 class LoginButtonWidget extends StatelessWidget {
@@ -16,7 +17,14 @@ class LoginButtonWidget extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return const AppLoadingDialogWidget();
+                  },
+                );
+              },
               style: FilledButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),

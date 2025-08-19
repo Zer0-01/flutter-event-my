@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_my_event/presentation/screen/profile/widgets/profile_app_bar_widget.dart';
 import 'package:flutter_my_event/routes/app_auto_route.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -8,6 +9,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const ProfileAppBarWidget(),
       body: Center(
         child: FilledButton(
           onPressed: () {

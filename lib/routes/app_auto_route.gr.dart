@@ -9,7 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i14;
+import 'package:auto_route/auto_route.dart' as _i15;
 import 'package:flutter_my_event/presentation/screen/create_event/catering/catering_setup_screen.dart'
     as _i1;
 import 'package:flutter_my_event/presentation/screen/create_event/create_event_setup_screen.dart'
@@ -19,7 +19,7 @@ import 'package:flutter_my_event/presentation/screen/create_event/event_basics/e
 import 'package:flutter_my_event/presentation/screen/create_event/event_category/event_category_setup_screen.dart'
     as _i5;
 import 'package:flutter_my_event/presentation/screen/create_event/venue/venue_setup_screen.dart'
-    as _i13;
+    as _i14;
 import 'package:flutter_my_event/presentation/screen/deals/deals_setup_screen.dart'
     as _i3;
 import 'package:flutter_my_event/presentation/screen/event/event_setup_screen.dart'
@@ -36,16 +36,18 @@ import 'package:flutter_my_event/presentation/screen/root/root_setup_screen.dart
     as _i11;
 import 'package:flutter_my_event/presentation/screen/saved/saved_setup_screen.dart'
     as _i12;
+import 'package:flutter_my_event/presentation/screen/settings/settings_setup_screen.dart'
+    as _i13;
 
 /// generated route for
 /// [_i1.CateringSetupScreen]
-class CateringSetupRoute extends _i14.PageRouteInfo<void> {
-  const CateringSetupRoute({List<_i14.PageRouteInfo>? children})
+class CateringSetupRoute extends _i15.PageRouteInfo<void> {
+  const CateringSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(CateringSetupRoute.name, initialChildren: children);
 
   static const String name = 'CateringSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i1.CateringSetupScreen();
@@ -55,13 +57,13 @@ class CateringSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.CreateEventSetupScreen]
-class CreateEventSetupRoute extends _i14.PageRouteInfo<void> {
-  const CreateEventSetupRoute({List<_i14.PageRouteInfo>? children})
+class CreateEventSetupRoute extends _i15.PageRouteInfo<void> {
+  const CreateEventSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(CreateEventSetupRoute.name, initialChildren: children);
 
   static const String name = 'CreateEventSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i2.CreateEventSetupScreen();
@@ -71,13 +73,13 @@ class CreateEventSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.DealsSetupScreen]
-class DealsSetupRoute extends _i14.PageRouteInfo<void> {
-  const DealsSetupRoute({List<_i14.PageRouteInfo>? children})
+class DealsSetupRoute extends _i15.PageRouteInfo<void> {
+  const DealsSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(DealsSetupRoute.name, initialChildren: children);
 
   static const String name = 'DealsSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i3.DealsSetupScreen();
@@ -87,13 +89,13 @@ class DealsSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.EventBasicsSetupScreen]
-class EventBasicsSetupRoute extends _i14.PageRouteInfo<void> {
-  const EventBasicsSetupRoute({List<_i14.PageRouteInfo>? children})
+class EventBasicsSetupRoute extends _i15.PageRouteInfo<void> {
+  const EventBasicsSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(EventBasicsSetupRoute.name, initialChildren: children);
 
   static const String name = 'EventBasicsSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i4.EventBasicsSetupScreen();
@@ -103,13 +105,13 @@ class EventBasicsSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.EventCategorySetupScreen]
-class EventCategorySetupRoute extends _i14.PageRouteInfo<void> {
-  const EventCategorySetupRoute({List<_i14.PageRouteInfo>? children})
+class EventCategorySetupRoute extends _i15.PageRouteInfo<void> {
+  const EventCategorySetupRoute({List<_i15.PageRouteInfo>? children})
     : super(EventCategorySetupRoute.name, initialChildren: children);
 
   static const String name = 'EventCategorySetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i5.EventCategorySetupScreen();
@@ -119,13 +121,13 @@ class EventCategorySetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.EventSetupScreen]
-class EventSetupRoute extends _i14.PageRouteInfo<void> {
-  const EventSetupRoute({List<_i14.PageRouteInfo>? children})
+class EventSetupRoute extends _i15.PageRouteInfo<void> {
+  const EventSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(EventSetupRoute.name, initialChildren: children);
 
   static const String name = 'EventSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i6.EventSetupScreen();
@@ -135,13 +137,13 @@ class EventSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.HomeSetupScreen]
-class HomeSetupRoute extends _i14.PageRouteInfo<void> {
-  const HomeSetupRoute({List<_i14.PageRouteInfo>? children})
+class HomeSetupRoute extends _i15.PageRouteInfo<void> {
+  const HomeSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(HomeSetupRoute.name, initialChildren: children);
 
   static const String name = 'HomeSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i7.HomeSetupScreen();
@@ -151,13 +153,13 @@ class HomeSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.LoginSetupScreen]
-class LoginSetupRoute extends _i14.PageRouteInfo<void> {
-  const LoginSetupRoute({List<_i14.PageRouteInfo>? children})
+class LoginSetupRoute extends _i15.PageRouteInfo<void> {
+  const LoginSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(LoginSetupRoute.name, initialChildren: children);
 
   static const String name = 'LoginSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i8.LoginSetupScreen();
@@ -167,13 +169,13 @@ class LoginSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.ProfileSetupScreen]
-class ProfileSetupRoute extends _i14.PageRouteInfo<void> {
-  const ProfileSetupRoute({List<_i14.PageRouteInfo>? children})
+class ProfileSetupRoute extends _i15.PageRouteInfo<void> {
+  const ProfileSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(ProfileSetupRoute.name, initialChildren: children);
 
   static const String name = 'ProfileSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i9.ProfileSetupScreen();
@@ -183,13 +185,13 @@ class ProfileSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.RegisterSetupScreen]
-class RegisterSetupRoute extends _i14.PageRouteInfo<void> {
-  const RegisterSetupRoute({List<_i14.PageRouteInfo>? children})
+class RegisterSetupRoute extends _i15.PageRouteInfo<void> {
+  const RegisterSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(RegisterSetupRoute.name, initialChildren: children);
 
   static const String name = 'RegisterSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i10.RegisterSetupScreen();
@@ -199,13 +201,13 @@ class RegisterSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.RootSetupScreen]
-class RootSetupRoute extends _i14.PageRouteInfo<void> {
-  const RootSetupRoute({List<_i14.PageRouteInfo>? children})
+class RootSetupRoute extends _i15.PageRouteInfo<void> {
+  const RootSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(RootSetupRoute.name, initialChildren: children);
 
   static const String name = 'RootSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i11.RootSetupScreen();
@@ -215,13 +217,13 @@ class RootSetupRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.SavedSetupScreen]
-class SavedSetupRoute extends _i14.PageRouteInfo<void> {
-  const SavedSetupRoute({List<_i14.PageRouteInfo>? children})
+class SavedSetupRoute extends _i15.PageRouteInfo<void> {
+  const SavedSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(SavedSetupRoute.name, initialChildren: children);
 
   static const String name = 'SavedSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
       return const _i12.SavedSetupScreen();
@@ -230,17 +232,33 @@ class SavedSetupRoute extends _i14.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i13.VenueSetupScreen]
-class VenueSetupRoute extends _i14.PageRouteInfo<void> {
-  const VenueSetupRoute({List<_i14.PageRouteInfo>? children})
+/// [_i13.SettingsSetupScreen]
+class SettingsSetupRoute extends _i15.PageRouteInfo<void> {
+  const SettingsSetupRoute({List<_i15.PageRouteInfo>? children})
+    : super(SettingsSetupRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsSetupRoute';
+
+  static _i15.PageInfo page = _i15.PageInfo(
+    name,
+    builder: (data) {
+      return const _i13.SettingsSetupScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [_i14.VenueSetupScreen]
+class VenueSetupRoute extends _i15.PageRouteInfo<void> {
+  const VenueSetupRoute({List<_i15.PageRouteInfo>? children})
     : super(VenueSetupRoute.name, initialChildren: children);
 
   static const String name = 'VenueSetupRoute';
 
-  static _i14.PageInfo page = _i14.PageInfo(
+  static _i15.PageInfo page = _i15.PageInfo(
     name,
     builder: (data) {
-      return const _i13.VenueSetupScreen();
+      return const _i14.VenueSetupScreen();
     },
   );
 }

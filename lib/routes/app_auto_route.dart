@@ -42,6 +42,7 @@ class AppAutoRoute extends RootStackRouter {
     ),
     AutoRoute(page: LoginSetupRoute.page, path: RoutePath.login),
     AutoRoute(page: RegisterSetupRoute.page, path: RoutePath.register),
+    AutoRoute(page: SettingsSetupRoute.page, path: RoutePath.settings),
   ];
 }
 
@@ -59,4 +60,5 @@ class RoutePath {
   static const String catering = 'catering';
   static const String login = '/login';
   static const String register = '/register';
+  static const String settings = '/settings';
 }

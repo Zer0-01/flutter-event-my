@@ -5,7 +5,15 @@ part 'language_event.dart';
 part 'language_state.dart';
 
 class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
-  LanguageBloc() : super(const LanguageState()) {
-    on<LanguageEvent>((event, emit) {});
+  LanguageBloc({required String language})
+    : super(LanguageState(language: language)) {
+    on<OnSelectLanguageEvent>(_onSelectLanguage);
+  }
+
+  void _onSelectLanguage(
+    OnSelectLanguageEvent event,
+    Emitter<LanguageState> emit,
+  ) {
+    emit(state.copyWith(language: event.language));
   }
 }

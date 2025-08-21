@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class LanguageBottomSheetWidget extends StatelessWidget {
@@ -31,10 +32,16 @@ class LanguageBottomSheetWidget extends StatelessWidget {
             ),
           ],
         ),
-        const Column(
+        Column(
           children: [
-            ListTile(title: Text("English")),
-            ListTile(title: Text("Bahasa Melayu")),
+            ListTile(
+              title: const Text("English"),
+              onTap: () => context.router.pop("en"),
+            ),
+            ListTile(
+              title: const Text("Bahasa Melayu"),
+              onTap: () => context.router.pop("ms"),
+            ),
           ],
         ),
       ],

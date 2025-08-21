@@ -13,14 +13,14 @@ void main() async {
   final logger = AppLogger.getLogger("main");
   ProfileConstants.setEnvironment(Environment.dev);
   logger.info("Starting App with env: {}", [Environment.dev.name]);
-  const defaultLanguage = "en";
   AppLocalStorage().setStorage(StorageType.sharedPreferences);
-  await AppLocalStorage().save(StorageKeys.language.name, defaultLanguage);
+  final String language =
+      await AppLocalStorage().read(StorageKeys.language.name) ?? "en";
   AppRouter().setRouter(RouterType.autoRoute);
   const initialTheme = AdaptiveThemeMode.light;
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((
     _,
   ) {
-    runApp(App(language: defaultLanguage, initialTheme: initialTheme));
+    runApp(App(language: language, initialTheme: initialTheme));
   });
 }

@@ -22,16 +22,18 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return buildHomeApp();
+    return buildHomeApp(language: language);
   }
 
-  AdaptiveTheme buildHomeApp() {
+  AdaptiveTheme buildHomeApp({required String language}) {
     return AdaptiveTheme(
       light: _buildLightTheme(),
       dark: _buildDarkTheme(),
       debugShowFloatingThemeButton: true,
       initial: initialTheme,
-      builder: (light, dark) => _buildMultiBlocProvider(light, dark),
+      builder:
+          (light, dark) =>
+              _buildMultiBlocProvider(light, dark, language: language),
     );
   }
 
@@ -109,18 +111,29 @@ class App extends StatelessWidget {
     return ThemeData(useMaterial3: true, colorScheme: colorScheme);
   }
 
-  MultiBlocProvider _buildMultiBlocProvider(ThemeData light, ThemeData dark) {
+  MultiBlocProvider _buildMultiBlocProvider(
+    ThemeData light,
+    ThemeData dark, {
+    required String language,
+  }) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => LanguageBloc())],
-      child: MaterialApp.router(
-        routerConfig: _appRouter.config(
-          navigatorObservers: () => [AppAutoRouterObserver()],
-        ),
-        theme: light,
-        darkTheme: dark,
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
+      providers: [
+        BlocProvider(create: (context) => LanguageBloc(language: language)),
+      ],
+      child: BlocBuilder<LanguageBloc, LanguageState>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            routerConfig: _appRouter.config(
+              navigatorObservers: () => [AppAutoRouterObserver()],
+            ),
+            theme: light,
+            darkTheme: dark,
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: Locale(state.language),
+          );
+        },
       ),
     );
   }

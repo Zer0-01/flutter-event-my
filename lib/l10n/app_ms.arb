@@ -1,5 +1,6 @@
 {
     "@@locale": "ms",
     "home": "Halaman Utama",
-    "@home": {}
+    "welcome": "Selamat Datang",
+    "login": "Log Masuk"
 }

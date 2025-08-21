@@ -1,5 +1,9 @@
 {
     "@@locale": "en",
     "home": "Home",
-    "@home": {}
+    "@home": {},
+    "welcome": "Welcome",
+    "@welcome": {},
+    "login": "Login",
+    "@login": {}
 }

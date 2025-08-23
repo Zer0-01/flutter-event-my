@@ -41,7 +41,9 @@ class ProfileConstants {
 class _Config {
   static const api = "API";
 
-  static Map<String, dynamic> devConstants = {api: "mock"};
+  static Map<String, dynamic> devConstants = {
+    api: "http://100.115.182.119:8080/api/v1",
+  };
 
   static Map<String, dynamic> testConstants = {api: "mock"};
 

@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_my_event/routes/app_auto_route.dart';
 import 'package:flutter_my_event/routes/app_auto_route.gr.dart';
-import 'package:flutter_my_event/routes/app_router.dart';
 import 'package:flutter_my_event/utils/extensions.dart';
 
 class RootScreen extends StatelessWidget {
@@ -20,7 +19,7 @@ class RootScreen extends StatelessWidget {
       ],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          AppRouter().push(context, RoutePath.createEvent);
+          context.router.pushPath(RoutePath.createEvent);
         },
         shape: const CircleBorder(),
         child: const Icon(Icons.add),

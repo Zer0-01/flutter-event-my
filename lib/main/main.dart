@@ -5,7 +5,6 @@ import 'package:flutter_my_event/config/app_env.dart';
 import 'package:flutter_my_event/config/app_logger.dart';
 import 'package:flutter_my_event/config/app_storage.dart';
 import 'package:flutter_my_event/main/app.dart';
-import 'package:flutter_my_event/routes/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,10 +12,8 @@ void main() async {
   final logger = AppLogger.getLogger("main");
   ProfileConstants.setEnvironment(Environment.dev);
   logger.info("Starting App with env: {}", [Environment.dev.name]);
-  AppLocalStorage().setStorage(StorageType.sharedPreferences);
   final String language =
       await AppLocalStorage().read(StorageKeys.language.name) ?? "en";
-  AppRouter().setRouter(RouterType.autoRoute);
   const initialTheme = AdaptiveThemeMode.light;
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((
     _,

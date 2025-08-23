@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_my_event/presentation/screen/create_event/widgets/exit_create_event_dialog_widget.dart';
-import 'package:flutter_my_event/routes/app_router.dart';
 
 class CreateEventScreen extends StatefulWidget {
   const CreateEventScreen({super.key});
@@ -28,7 +27,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
             );
             if (isExit == true) {
               if (!context.mounted) return;
-              AppRouter().pop(context);
+              context.router.pop();
             }
           },
           icon: const Icon(Icons.chevron_left),

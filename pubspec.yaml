@@ -47,6 +47,7 @@ dependencies:
   flutter_svg: ^2.2.0
   dio: ^5.9.0
   pretty_dio_logger: ^1.4.0
+  flutter_secure_storage: ^4.2.1
 
 dev_dependencies:
   flutter_test:

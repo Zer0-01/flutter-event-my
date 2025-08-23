@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_my_event/presentation/common_widgets/app_text_form_field_widget.dart';
 
 class PasswordFormWidget extends StatefulWidget {
-  const PasswordFormWidget({super.key});
+  final TextEditingController passwordController;
+  final TextEditingController confirmPasswordController;
+
+  const PasswordFormWidget({
+    super.key,
+    required this.passwordController,
+    required this.confirmPasswordController,
+  });
 
   @override
   State<PasswordFormWidget> createState() => _PasswordFormWidgetState();
@@ -27,6 +34,7 @@ class _PasswordFormWidgetState extends State<PasswordFormWidget> {
             ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           AppTextFormFieldWidget(
+            controller: widget.passwordController,
             hintText: "Create a password",
             obscureText: _obscurePassword,
             suffixIcon: Padding(
@@ -44,6 +52,7 @@ class _PasswordFormWidgetState extends State<PasswordFormWidget> {
             ),
           ),
           AppTextFormFieldWidget(
+            controller: widget.confirmPasswordController,
             hintText: "Confirm password",
             obscureText: _obscureConfirmPassword,
             suffixIcon: Padding(

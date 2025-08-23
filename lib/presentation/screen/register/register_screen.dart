@@ -7,23 +7,67 @@ import 'package:flutter_my_event/presentation/screen/register/widgets/register_b
 import 'package:flutter_my_event/presentation/screen/register/widgets/register_title_widget.dart';
 import 'package:flutter_my_event/presentation/screen/register/widgets/terms_and_condition_widget.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
   @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  late final TextEditingController _nameController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+  late final TextEditingController _confirmPasswordController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    _confirmPasswordController = TextEditingController();
+    _nameController.addListener(_onChanged);
+    _emailController.addListener(_onChanged);
+    _passwordController.addListener(_onChanged);
+    _confirmPasswordController.addListener(_onChanged);
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  void _onChanged() {
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: RegisterAppBarWidget(),
+    return Scaffold(
+      appBar: const RegisterAppBarWidget(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 16,
         children: [
-          RegisterTitleWidget(),
-          NameFormWidget(),
-          EmailFormWidget(),
-          PasswordFormWidget(),
-          TermsAndConditionWidget(),
-          RegisterButtonWidget(),
+          const RegisterTitleWidget(),
+          NameFormWidget(nameController: _nameController),
+          EmailFormWidget(emailController: _emailController),
+          PasswordFormWidget(
+            passwordController: _passwordController,
+            confirmPasswordController: _confirmPasswordController,
+          ),
+          const TermsAndConditionWidget(),
+          RegisterButtonWidget(
+            nameController: _nameController,
+            emailController: _emailController,
+            passwordController: _passwordController,
+            confirmPasswordController: _confirmPasswordController,
+          ),
         ],
       ),
     );

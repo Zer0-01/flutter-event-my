@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_my_event/presentation/common_widgets/app_text_form_field_widget.dart';
 
 class EmailFormWidget extends StatelessWidget {
-  const EmailFormWidget({super.key});
+  final TextEditingController emailController;
+
+  const EmailFormWidget({super.key, required this.emailController});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,10 @@ class EmailFormWidget extends StatelessWidget {
               context,
             ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
-          const AppTextFormFieldWidget(hintText: "john@email.com"),
+          AppTextFormFieldWidget(
+            controller: emailController,
+            hintText: "john@email.com",
+          ),
         ],
       ),
     );

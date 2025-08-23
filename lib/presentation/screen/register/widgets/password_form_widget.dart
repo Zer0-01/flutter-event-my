@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_my_event/presentation/common_widgets/app_text_form_field_widget.dart';
+import 'package:flutter_my_event/utils/validators.dart';
 
 class PasswordFormWidget extends StatefulWidget {
   final TextEditingController passwordController;
@@ -35,6 +36,9 @@ class _PasswordFormWidgetState extends State<PasswordFormWidget> {
           ),
           AppTextFormFieldWidget(
             controller: widget.passwordController,
+            validator: (value) {
+              return Validators.password(value);
+            },
             hintText: "Create a password",
             obscureText: _obscurePassword,
             suffixIcon: Padding(
@@ -53,6 +57,12 @@ class _PasswordFormWidgetState extends State<PasswordFormWidget> {
           ),
           AppTextFormFieldWidget(
             controller: widget.confirmPasswordController,
+            validator: (value) {
+              return Validators.confirmPassword(
+                value,
+                widget.passwordController.text,
+              );
+            },
             hintText: "Confirm password",
             obscureText: _obscureConfirmPassword,
             suffixIcon: Padding(

@@ -1,5 +1,6 @@
 import 'package:flutter_my_event/config/app_logger.dart';
 import 'package:flutter_my_event/data/api_endpoints.dart';
+import 'package:flutter_my_event/data/model/request/register_dto_request.dart';
 import 'package:flutter_my_event/services/network_service.dart';
 
 class AuthRepository {
@@ -10,20 +11,14 @@ class AuthRepository {
     : _network = network ?? NetworkService();
 
   Future<void> registerUser({
-    required String email,
-    required String password,
-    required String name,
+    required RegisterDtoRequest registerDtoRequest,
   }) async {
-    try {
-      final response = await _network.post(ApiEndpoints.register, {
-        "email": email,
-        "password": password,
-        "name": name,
-      });
-
-      if (response == null) return null;
-    } catch (e, stack) {
-      _logger.error("Failed to register user", [e, stack]);
-    }
+    _logger.info("Registering user with email: {}, password: {}, name: {}", [
+      registerDtoRequest.email,
+      registerDtoRequest.password,
+      registerDtoRequest.name,
+    ]);
+    await _network.post(ApiEndpoints.register, registerDtoRequest.toJson());
+    _logger.info("User registered successfully");
   }
 }

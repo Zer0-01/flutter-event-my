@@ -7,6 +7,7 @@ class RegisterButtonWidget extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
+  final GlobalKey<FormState> formKey;
 
   const RegisterButtonWidget({
     super.key,
@@ -14,6 +15,7 @@ class RegisterButtonWidget extends StatelessWidget {
     required this.emailController,
     required this.passwordController,
     required this.confirmPasswordController,
+    required this.formKey,
   });
 
   @override
@@ -39,13 +41,15 @@ class RegisterButtonWidget extends StatelessWidget {
                         state.isAgree,
                       )
                       ? () {
-                        context.read<RegisterBloc>().add(
-                          OnRegisterEvent(
-                            email: nameController.text,
-                            password: passwordController.text,
-                            name: nameController.text,
-                          ),
-                        );
+                        if (formKey.currentState!.validate()) {
+                          context.read<RegisterBloc>().add(
+                            OnRegisterEvent(
+                              email: emailController.text,
+                              password: passwordController.text,
+                              name: nameController.text,
+                            ),
+                          );
+                        }
                       }
                       : null,
               child: const Text("Register"),

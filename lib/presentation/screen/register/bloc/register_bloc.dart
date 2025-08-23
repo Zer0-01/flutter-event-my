@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_my_event/config/app_logger.dart';
+import 'package:flutter_my_event/data/model/request/register_dto_request.dart';
 import 'package:flutter_my_event/data/repository/auth_repository.dart';
 
 part 'register_event.dart';
@@ -48,16 +50,35 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }) async {
     try {
       emit(state.copyWith(postRegisterStatus: PostRegisterStatus.loading));
-      await _authRepository.registerUser(
+      final RegisterDtoRequest registerDtoRequest = RegisterDtoRequest(
+        name: name,
         email: email,
         password: password,
-        name: name,
+      );
+
+      await _authRepository.registerUser(
+        registerDtoRequest: registerDtoRequest,
       );
 
       emit(state.copyWith(postRegisterStatus: PostRegisterStatus.success));
-    } catch (e) {
-      _logger.error(e);
-      emit(state.copyWith(postRegisterStatus: PostRegisterStatus.error));
+    } on DioException catch (e) {
+      _logger.error("DioException: ${e.message}");
+      emit(
+        state.copyWith(
+          postRegisterStatus: PostRegisterStatus.error,
+          dioTypePostRegister: e.type,
+          dioCodePostRegister: e.response?.statusCode ?? -1,
+        ),
+      );
+    } catch (e, stack) {
+      _logger.error("Unexpected error", [e, stack]);
+      emit(
+        state.copyWith(
+          postRegisterStatus: PostRegisterStatus.error,
+          dioTypePostRegister: DioExceptionType.unknown,
+          dioCodePostRegister: -1,
+        ),
+      );
     }
   }
 }

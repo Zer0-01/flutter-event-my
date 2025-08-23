@@ -19,6 +19,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final TextEditingController _confirmPasswordController;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -50,25 +51,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const RegisterAppBarWidget(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 16,
-        children: [
-          const RegisterTitleWidget(),
-          NameFormWidget(nameController: _nameController),
-          EmailFormWidget(emailController: _emailController),
-          PasswordFormWidget(
-            passwordController: _passwordController,
-            confirmPasswordController: _confirmPasswordController,
-          ),
-          const TermsAndConditionWidget(),
-          RegisterButtonWidget(
-            nameController: _nameController,
-            emailController: _emailController,
-            passwordController: _passwordController,
-            confirmPasswordController: _confirmPasswordController,
-          ),
-        ],
+      body: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 16,
+          children: [
+            const RegisterTitleWidget(),
+            NameFormWidget(nameController: _nameController),
+            EmailFormWidget(emailController: _emailController),
+            PasswordFormWidget(
+              passwordController: _passwordController,
+              confirmPasswordController: _confirmPasswordController,
+            ),
+            const TermsAndConditionWidget(),
+            RegisterButtonWidget(
+              nameController: _nameController,
+              emailController: _emailController,
+              passwordController: _passwordController,
+              confirmPasswordController: _confirmPasswordController,
+              formKey: _formKey,
+            ),
+          ],
+        ),
       ),
     );
   }

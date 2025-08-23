@@ -1,5 +1,6 @@
 import 'package:flutter_my_event/config/app_logger.dart';
 import 'package:flutter_my_event/data/api_endpoints.dart';
+import 'package:flutter_my_event/data/model/request/login_dto_request.dart';
 import 'package:flutter_my_event/data/model/request/register_dto_request.dart';
 import 'package:flutter_my_event/services/network_service.dart';
 
@@ -20,5 +21,14 @@ class AuthRepository {
     ]);
     await _network.post(ApiEndpoints.register, registerDtoRequest.toJson());
     _logger.info("User registered successfully");
+  }
+
+  Future<void> loginUser({required LoginDtoRequest loginDtoRequest}) async {
+    _logger.info("Logging in user with email: {}, password: {}", [
+      loginDtoRequest.email,
+      loginDtoRequest.password,
+    ]);
+    await _network.post(ApiEndpoints.login, loginDtoRequest.toJson());
+    _logger.info("User logged in successfully");
   }
 }

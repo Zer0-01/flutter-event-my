@@ -59,3 +59,5 @@ class AppSecureStorage {
     }
   }
 }
+
+enum SecureStorageKeys { accessToken, refreshToken }

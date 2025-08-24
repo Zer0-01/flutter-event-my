@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_my_event/config/app_secure_storage.dart';
 import 'package:flutter_my_event/data/repository/auth_repository.dart';
 import 'package:flutter_my_event/presentation/common_widgets/app_loading_dialog_widget.dart';
 import 'package:flutter_my_event/presentation/screen/login/bloc/login_bloc.dart';
@@ -13,7 +14,11 @@ class LoginSetupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(authRepository: AuthRepository()),
+      create:
+          (context) => LoginBloc(
+            authRepository: AuthRepository(),
+            appSecureStorage: AppSecureStorage(),
+          ),
       child: BlocListener<LoginBloc, LoginState>(
         listenWhen:
             (previous, current) =>

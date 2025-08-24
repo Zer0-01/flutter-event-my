@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_my_event/config/app_logger.dart';
+import 'package:flutter_my_event/config/app_secure_storage.dart';
 import 'package:flutter_my_event/data/model/request/login_dto_request.dart';
+import 'package:flutter_my_event/data/model/response/login_dto_response.dart';
 import 'package:flutter_my_event/data/repository/auth_repository.dart';
 
 part 'login_event.dart';
@@ -11,10 +13,15 @@ part 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AppLogger _logger = AppLogger.getLogger("LoginBloc");
   late final AuthRepository _authRepository;
+  late final AppSecureStorage _appSecureStorage;
 
-  LoginBloc({required AuthRepository authRepository})
-    : _authRepository = authRepository,
-      super(const LoginState()) {
+  LoginBloc({
+    required AuthRepository authRepository,
+    required AppSecureStorage appSecureStorage,
+  }) : _authRepository = authRepository,
+       _appSecureStorage = appSecureStorage,
+
+       super(const LoginState()) {
     on<OnPressedLoginEvent>(_onPressedLogin);
   }
 
@@ -42,7 +49,20 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         email: email,
         password: password,
       );
-      await _authRepository.loginUser(loginDtoRequest: loginDtoRequest);
+      final LoginDtoResponse loginDtoResponse = await _authRepository.loginUser(
+        loginDtoRequest: loginDtoRequest,
+      );
+      final String accessToken = loginDtoResponse.data.accessToken;
+      final String refreshToken = loginDtoResponse.data.refreshToken;
+      _logger.debug("accessToken: {}, refreshToken: {}", [
+        accessToken,
+        refreshToken,
+      ]);
+
+      await _saveLocalStorage(
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      );
 
       emit(state.copyWith(postLoginStatus: PostLoginStatus.success));
     } on DioException catch (e) {
@@ -64,5 +84,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         ),
       );
     }
+  }
+
+  Future<void> _saveLocalStorage({
+    required String accessToken,
+    required String refreshToken,
+  }) async {
+    _logger.debug("saveLocalStorage");
+    await _appSecureStorage.save(
+      SecureStorageKeys.accessToken.name,
+      accessToken,
+    );
+    await _appSecureStorage.save(
+      SecureStorageKeys.refreshToken.name,
+      refreshToken,
+    );
+    _logger.debug("saveLocalStorage end");
   }
 }

@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_my_event/config/app_secure_storage.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_my_event/data/repository/auth_repository.dart';
 import 'package:flutter_my_event/presentation/common_widgets/app_loading_dialog_widget.dart';
 import 'package:flutter_my_event/presentation/screen/login/bloc/login_bloc.dart';
 import 'package:flutter_my_event/presentation/screen/login/login_screen.dart';
+import 'package:flutter_my_event/routes/app_auto_route.gr.dart';
 
 @RoutePage()
 class LoginSetupScreen extends StatelessWidget {
@@ -43,10 +45,9 @@ class LoginSetupScreen extends StatelessWidget {
 
           if (state.postLoginStatus == PostLoginStatus.success) {
             Navigator.pop(context);
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(const SnackBar(content: Text("Success")));
-            return;
+            context.router.replaceAll([
+              const RootSetupRoute(),
+            ], updateExistingRoutes: false);
           }
         },
         child: const LoginScreen(),

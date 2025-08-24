@@ -1,10 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_my_event/presentation/common_widgets/app_loading_dialog_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_my_event/presentation/screen/login/bloc/login_bloc.dart';
 import 'package:flutter_my_event/routes/app_auto_route.dart';
 
 class LoginButtonWidget extends StatelessWidget {
-  const LoginButtonWidget({super.key});
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+
+  const LoginButtonWidget({
+    super.key,
+    required this.emailController,
+    required this.passwordController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +26,11 @@ class LoginButtonWidget extends StatelessWidget {
             width: double.infinity,
             child: FilledButton(
               onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return const AppLoadingDialogWidget();
-                  },
+                context.read<LoginBloc>().add(
+                  OnPressedLoginEvent(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  ),
                 );
               },
               style: FilledButton.styleFrom(

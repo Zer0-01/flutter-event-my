@@ -3,6 +3,7 @@ import 'package:flutter_my_event/data/api_endpoints.dart';
 import 'package:flutter_my_event/data/model/request/login_dto_request.dart';
 import 'package:flutter_my_event/data/model/request/register_dto_request.dart';
 import 'package:flutter_my_event/data/model/response/login_dto_response.dart';
+import 'package:flutter_my_event/data/model/response/profile_dto_response.dart';
 import 'package:flutter_my_event/services/network_service.dart';
 
 class AuthRepository {
@@ -38,5 +39,13 @@ class AuthRepository {
 
     _logger.info("User logged in successfully");
     return LoginDtoResponse.fromJson(response);
+  }
+
+  Future<ProfileDtoResponse> getProfile() async {
+    _logger.info("Getting profile");
+    final Map<String, dynamic> response = await _network.get(
+      ApiEndpoints.profile,
+    );
+    return ProfileDtoResponse.fromJson(response);
   }
 }

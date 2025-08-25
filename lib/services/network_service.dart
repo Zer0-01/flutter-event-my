@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_my_event/config/app_env.dart';
 import 'package:flutter_my_event/config/app_logger.dart';
+import 'package:flutter_my_event/config/app_secure_storage.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class NetworkService {
@@ -9,6 +10,7 @@ class NetworkService {
 
   final Dio _dio;
   final _logger = AppLogger.getLogger("NetworkService");
+  final AppSecureStorage _appSecureStorage = AppSecureStorage();
 
   NetworkService._internal()
     : _dio = Dio(
@@ -26,7 +28,18 @@ class NetworkService {
   void _initializeInterceptors() {
     _dio.interceptors.add(
       InterceptorsWrapper(
-        onRequest: (options, handler) {
+        onRequest: (options, handler) async {
+          // ✅ Add token only if required
+          final requiresAuth = options.extra["requiresAuth"] ?? true;
+          if (requiresAuth) {
+            final token = await _appSecureStorage.read(
+              SecureStorageKeys.accessToken.name,
+            );
+            if (token != null && token.isNotEmpty) {
+              options.headers["Authorization"] = "Bearer $token";
+            }
+          }
+
           _logger.debug("➡️ ${options.method} ${options.uri}");
           return handler.next(options);
         },
@@ -38,7 +51,7 @@ class NetworkService {
         },
         onError: (DioException e, handler) {
           _logger.error("❌ ${e.response?.statusCode} ${e.message}");
-          return handler.next(e); // let it bubble up
+          return handler.next(e); // bubble up
         },
       ),
     );
@@ -60,11 +73,12 @@ class NetworkService {
     String url, {
     Map<String, dynamic>? queryParams,
     Map<String, String>? headers,
+    bool requiresAuth = true,
   }) async {
     final response = await _dio.get(
       url,
       queryParameters: queryParams,
-      options: Options(headers: headers),
+      options: Options(headers: headers, extra: {"requiresAuth": requiresAuth}),
     );
     return _handleResponse(response);
   }
@@ -73,11 +87,12 @@ class NetworkService {
     String url,
     dynamic data, {
     Map<String, String>? headers,
+    bool requiresAuth = true,
   }) async {
     final response = await _dio.post(
       url,
       data: data,
-      options: Options(headers: headers),
+      options: Options(headers: headers, extra: {"requiresAuth": requiresAuth}),
     );
     return _handleResponse(response);
   }
